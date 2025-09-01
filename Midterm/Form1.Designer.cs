@@ -48,8 +48,8 @@
             this.cbZodiac = new MaterialSkin.Controls.MaterialComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnUpdate = new MaterialSkin.Controls.MaterialButton();
-            this.btnDelete = new MaterialSkin.Controls.MaterialButton();
             this.btnAdd = new MaterialSkin.Controls.MaterialButton();
+            this.txtSearch = new MaterialSkin.Controls.MaterialMaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -387,7 +387,7 @@
             this.btnUpdate.Depth = 0;
             this.btnUpdate.HighEmphasis = true;
             this.btnUpdate.Icon = null;
-            this.btnUpdate.Location = new System.Drawing.Point(37, 644);
+            this.btnUpdate.Location = new System.Drawing.Point(341, 644);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnUpdate.Name = "btnUpdate";
@@ -400,26 +400,6 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // btnDelete
-            // 
-            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnDelete.Depth = 0;
-            this.btnDelete.HighEmphasis = true;
-            this.btnDelete.Icon = null;
-            this.btnDelete.Location = new System.Drawing.Point(189, 644);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnDelete.Size = new System.Drawing.Size(73, 36);
-            this.btnDelete.TabIndex = 22;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnDelete.UseAccentColor = false;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // btnAdd
             // 
             this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -427,12 +407,12 @@
             this.btnAdd.Depth = 0;
             this.btnAdd.HighEmphasis = true;
             this.btnAdd.Icon = null;
-            this.btnAdd.Location = new System.Drawing.Point(336, 644);
+            this.btnAdd.Location = new System.Drawing.Point(473, 644);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAdd.Size = new System.Drawing.Size(64, 36);
+            this.btnAdd.Size = new System.Drawing.Size(84, 36);
             this.btnAdd.TabIndex = 23;
             this.btnAdd.Text = "Refresh";
             this.btnAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -440,13 +420,56 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.AllowPromptAsInput = true;
+            this.txtSearch.AnimateReadOnly = false;
+            this.txtSearch.AsciiOnly = false;
+            this.txtSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtSearch.BeepOnError = false;
+            this.txtSearch.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtSearch.Depth = 0;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearch.HidePromptOnLeave = false;
+            this.txtSearch.HideSelection = true;
+            this.txtSearch.Hint = "Search...";
+            this.txtSearch.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
+            this.txtSearch.LeadingIcon = null;
+            this.txtSearch.Location = new System.Drawing.Point(37, 632);
+            this.txtSearch.Mask = "";
+            this.txtSearch.MaxLength = 32767;
+            this.txtSearch.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.PrefixSuffixText = null;
+            this.txtSearch.PromptChar = '_';
+            this.txtSearch.ReadOnly = false;
+            this.txtSearch.RejectInputOnFirstFailure = false;
+            this.txtSearch.ResetOnPrompt = true;
+            this.txtSearch.ResetOnSpace = true;
+            this.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.SelectionLength = 0;
+            this.txtSearch.SelectionStart = 0;
+            this.txtSearch.ShortcutsEnabled = true;
+            this.txtSearch.Size = new System.Drawing.Size(250, 48);
+            this.txtSearch.SkipLiterals = true;
+            this.txtSearch.TabIndex = 24;
+            this.txtSearch.TabStop = false;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSearch.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
+            this.txtSearch.TrailingIcon = null;
+            this.txtSearch.UseSystemPasswordChar = false;
+            this.txtSearch.ValidatingType = null;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 705);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbZodiac);
@@ -499,8 +522,8 @@
         private MaterialSkin.Controls.MaterialComboBox cbZodiac;
         private System.Windows.Forms.DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialButton btnUpdate;
-        private MaterialSkin.Controls.MaterialButton btnDelete;
         private MaterialSkin.Controls.MaterialButton btnAdd;
+        private MaterialSkin.Controls.MaterialMaskedTextBox txtSearch;
     }
 }
 

@@ -189,43 +189,6 @@ namespace Midterm
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (selectedId == -1)
-            {
-                MessageBox.Show("Please select a record first!");
-                return;
-            }
-
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?",
-                                                  "Confirm Delete",
-                                                  MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    using (MySqlConnection conn = new MySqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        string query = "DELETE FROM users WHERE id=@id";
-
-                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                        {
-                            cmd.Parameters.AddWithValue("@id", selectedId);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Record deleted successfully!");
-                    LoadData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             txtLastName.Clear();
@@ -235,6 +198,40 @@ namespace Midterm
             txtUsername.Clear();
             txtPassword.Clear();
             txtLastName.Focus();
+        }
+
+        private void SearchData(string searchTerm)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, zodiac
+                             FROM users
+                             WHERE CONCAT(lastname, ' ', firstname, ' ', username) LIKE @search";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.Add("@search", MySqlDbType.VarChar).Value = "%" + searchTerm + "%";
+
+                        MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dataGridView1.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching data: " + ex.Message);
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            SearchData(txtSearch.Text.Trim());
         }
     }
 }
