@@ -46,6 +46,11 @@
             this.txtUsername = new MaterialSkin.Controls.MaterialTextBox();
             this.txtPassword = new MaterialSkin.Controls.MaterialTextBox();
             this.cbZodiac = new MaterialSkin.Controls.MaterialComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new MaterialSkin.Controls.MaterialButton();
+            this.btnDelete = new MaterialSkin.Controls.MaterialButton();
+            this.btnAdd = new MaterialSkin.Controls.MaterialButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -72,7 +77,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 190);
+            this.label3.Location = new System.Drawing.Point(32, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 27);
             this.label3.TabIndex = 2;
@@ -82,7 +87,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(566, 47);
+            this.label4.Location = new System.Drawing.Point(557, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(145, 27);
             this.label4.TabIndex = 3;
@@ -92,7 +97,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(49, 258);
+            this.label5.Location = new System.Drawing.Point(49, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(97, 27);
             this.label5.TabIndex = 4;
@@ -102,7 +107,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(70, 336);
+            this.label6.Location = new System.Drawing.Point(70, 331);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 27);
             this.label6.TabIndex = 5;
@@ -112,7 +117,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(566, 294);
+            this.label7.Location = new System.Drawing.Point(557, 311);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(143, 27);
             this.label7.TabIndex = 6;
@@ -122,7 +127,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(566, 124);
+            this.label8.Location = new System.Drawing.Point(557, 141);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 27);
             this.label8.TabIndex = 7;
@@ -132,7 +137,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(566, 215);
+            this.label9.Location = new System.Drawing.Point(557, 232);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(115, 27);
             this.label9.TabIndex = 8;
@@ -187,7 +192,7 @@
             this.txtMiddleName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.txtMiddleName.Hint = "Enter your middlename";
             this.txtMiddleName.LeadingIcon = null;
-            this.txtMiddleName.Location = new System.Drawing.Point(220, 167);
+            this.txtMiddleName.Location = new System.Drawing.Point(220, 162);
             this.txtMiddleName.MaxLength = 50;
             this.txtMiddleName.MouseState = MaterialSkin.MouseState.OUT;
             this.txtMiddleName.Multiline = false;
@@ -221,7 +226,7 @@
             "Education",
             "Information Technology",
             "Engineering"});
-            this.cbDept.Location = new System.Drawing.Point(754, 25);
+            this.cbDept.Location = new System.Drawing.Point(745, 42);
             this.cbDept.MaxDropDownItems = 4;
             this.cbDept.MouseState = MaterialSkin.MouseState.OUT;
             this.cbDept.Name = "cbDept";
@@ -250,7 +255,7 @@
             "Male",
             "Female",
             "Other"});
-            this.cbGender.Location = new System.Drawing.Point(220, 249);
+            this.cbGender.Location = new System.Drawing.Point(220, 244);
             this.cbGender.MaxDropDownItems = 4;
             this.cbGender.MouseState = MaterialSkin.MouseState.OUT;
             this.cbGender.Name = "cbGender";
@@ -268,7 +273,7 @@
             this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.txtAge.Hint = "Enter your age";
             this.txtAge.LeadingIcon = null;
-            this.txtAge.Location = new System.Drawing.Point(220, 323);
+            this.txtAge.Location = new System.Drawing.Point(220, 318);
             this.txtAge.MaxLength = 50;
             this.txtAge.MouseState = MaterialSkin.MouseState.OUT;
             this.txtAge.Multiline = false;
@@ -288,7 +293,7 @@
             this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.txtUsername.Hint = "Enter your username";
             this.txtUsername.LeadingIcon = null;
-            this.txtUsername.Location = new System.Drawing.Point(754, 114);
+            this.txtUsername.Location = new System.Drawing.Point(745, 131);
             this.txtUsername.MaxLength = 50;
             this.txtUsername.MouseState = MaterialSkin.MouseState.OUT;
             this.txtUsername.Multiline = false;
@@ -308,7 +313,7 @@
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.txtPassword.Hint = "Enter your password";
             this.txtPassword.LeadingIcon = null;
-            this.txtPassword.Location = new System.Drawing.Point(754, 206);
+            this.txtPassword.Location = new System.Drawing.Point(745, 223);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.MouseState = MaterialSkin.MouseState.OUT;
             this.txtPassword.Multiline = false;
@@ -348,7 +353,7 @@
             "Capricorn",
             "Aquarius",
             "Pisces"});
-            this.cbZodiac.Location = new System.Drawing.Point(754, 281);
+            this.cbZodiac.Location = new System.Drawing.Point(745, 298);
             this.cbZodiac.MaxDropDownItems = 4;
             this.cbZodiac.MouseState = MaterialSkin.MouseState.OUT;
             this.cbZodiac.Name = "cbZodiac";
@@ -357,11 +362,93 @@
             this.cbZodiac.TabIndex = 19;
             this.cbZodiac.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_KeyDown);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 395);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 222);
+            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnUpdate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnUpdate.Depth = 0;
+            this.btnUpdate.HighEmphasis = true;
+            this.btnUpdate.Icon = null;
+            this.btnUpdate.Location = new System.Drawing.Point(37, 644);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnUpdate.Size = new System.Drawing.Size(77, 36);
+            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnUpdate.UseAccentColor = false;
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDelete.Depth = 0;
+            this.btnDelete.HighEmphasis = true;
+            this.btnDelete.Icon = null;
+            this.btnDelete.Location = new System.Drawing.Point(189, 644);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDelete.Size = new System.Drawing.Size(73, 36);
+            this.btnDelete.TabIndex = 22;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDelete.UseAccentColor = false;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAdd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAdd.Depth = 0;
+            this.btnAdd.HighEmphasis = true;
+            this.btnAdd.Icon = null;
+            this.btnAdd.Location = new System.Drawing.Point(336, 644);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAdd.Size = new System.Drawing.Size(64, 36);
+            this.btnAdd.TabIndex = 23;
+            this.btnAdd.Text = "Refresh";
+            this.btnAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAdd.UseAccentColor = false;
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 414);
+            this.ClientSize = new System.Drawing.Size(1093, 705);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cbZodiac);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -382,7 +469,9 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "CRUD";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,6 +497,10 @@
         private MaterialSkin.Controls.MaterialTextBox txtUsername;
         private MaterialSkin.Controls.MaterialTextBox txtPassword;
         private MaterialSkin.Controls.MaterialComboBox cbZodiac;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private MaterialSkin.Controls.MaterialButton btnUpdate;
+        private MaterialSkin.Controls.MaterialButton btnDelete;
+        private MaterialSkin.Controls.MaterialButton btnAdd;
     }
 }
 
