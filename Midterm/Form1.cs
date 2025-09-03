@@ -13,7 +13,7 @@ namespace Midterm
 {
     public partial class Form1 : Form
     {
-        private string connectionString = "server=localhost;database=jiro;uid=root;pwd=;";
+        private string connectionString = "server=localhost;database=jenah_db;uid=root;pwd=;";
         private int selectedId = -1;
 
         public Form1()
@@ -30,23 +30,23 @@ namespace Midterm
                 Control me = sender as Control;
 
                 if (me == txtLastName) txtFirstName.Focus();
-                else if (me == txtFirstName) txtMiddleName.Focus();
-                else if (me == txtMiddleName) cbGender.Focus();
+                else if (me == txtFirstName) txtAddress.Focus();
+                else if (me == txtAddress) cbGender.Focus();
                 else if (me == cbGender) txtAge.Focus();
-                else if (me == txtAge) cbDept.Focus();
-                else if (me == cbDept) txtUsername.Focus();
-                else if (me == txtUsername) txtPassword.Focus();
-                else if (me == txtPassword) cbPosition.Focus();
+                else if (me == txtAge) cbSport.Focus();
+                else if (me == cbSport) txtTeam.Focus();
+                else if (me == txtTeam) txtNickname.Focus();
+                else if (me == txtNickname) cbPosition.Focus();
                 else if (me == cbPosition)
                 {
                     if (string.IsNullOrWhiteSpace(txtLastName.Text) ||
                         string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                        string.IsNullOrWhiteSpace(txtMiddleName.Text) ||
+                        string.IsNullOrWhiteSpace(txtAddress.Text) ||
                         string.IsNullOrWhiteSpace(txtAge.Text) ||
-                        string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                        string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                        string.IsNullOrWhiteSpace(txtTeam.Text) ||
+                        string.IsNullOrWhiteSpace(txtNickname.Text) ||
                         cbGender.SelectedIndex == -1 ||
-                        cbDept.SelectedIndex == -1 ||
+                        cbSport.SelectedIndex == -1 ||
                         cbPosition.SelectedIndex == -1)
                     {
                         MessageBox.Show("Please fill in all textboxes and select values in all combo boxes.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -56,10 +56,6 @@ namespace Midterm
                     if (selectedId == -1)
                     {
                         InsertRecord();
-                    }
-                    else
-                    {
-                        UpdateRecord();
                     }
                 }
             }
@@ -73,99 +69,29 @@ namespace Midterm
                 {
                     conn.Open();
                     string query = @"INSERT INTO users
-                (lastname, firstname, middlename, gender, age, dept, username, password, position)
+                (lastname, firstname, address, gender, age, sport, team, nickname, position)
                 VALUES
-                (@lastname, @firstname, @middlename, @gender, @age, @dept, @username, @password, @position)";
+                (@lastname, @firstname, @address, @gender, @age, @sport, @team, @nickname, @position)";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
                         cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
-                        cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
+                        cmd.Parameters.AddWithValue("@address", txtAddress.Text);
                         cmd.Parameters.AddWithValue("@gender", cbGender.Text);
                         cmd.Parameters.AddWithValue("@age", txtAge.Text);
-                        cmd.Parameters.AddWithValue("@dept", cbDept.Text);
-                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@sport", cbSport.Text);
+                        cmd.Parameters.AddWithValue("@team", txtTeam.Text);
+                        cmd.Parameters.AddWithValue("@nickname", txtNickname.Text);
                         cmd.Parameters.AddWithValue("@position", cbPosition.Text);
 
                         cmd.ExecuteNonQuery();
                     }
                 }
 
-                MessageBox.Show("Data saved successfully!");
+                MessageBox.Show("Saved successfully!");
                 LoadData();
                 ClearInputs();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        private void UpdateRecord()
-        {
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    string selectQuery = "SELECT lastname, firstname, middlename, gender, age, dept, username, password, position FROM users WHERE id=@id";
-                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn))
-                    {
-                        selectCmd.Parameters.AddWithValue("@id", selectedId);
-                        using (MySqlDataReader reader = selectCmd.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                bool hasChanges =
-                                    reader["lastname"].ToString() != txtLastName.Text ||
-                                    reader["firstname"].ToString() != txtFirstName.Text ||
-                                    reader["middlename"].ToString() != txtMiddleName.Text ||
-                                    reader["gender"].ToString() != cbGender.Text ||
-                                    reader["age"].ToString() != txtAge.Text ||
-                                    reader["dept"].ToString() != cbDept.Text ||
-                                    reader["username"].ToString() != txtUsername.Text ||
-                                    reader["password"].ToString() != txtPassword.Text ||
-                                    reader["position"].ToString() != cbPosition.Text;
-
-                                if (!hasChanges)
-                                {
-                                    MessageBox.Show("No changes detected. Record not updated.");
-                                    return;
-                                }
-                            }
-                        }
-                    }
-
-                    string updateQuery = @"UPDATE users SET
-                        lastname=@lastname, firstname=@firstname, middlename=@middlename,
-                        gender=@gender, age=@age, dept=@dept,
-                        username=@username, password=@password, position=@position
-                        WHERE id=@id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
-                        cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
-                        cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
-                        cmd.Parameters.AddWithValue("@gender", cbGender.Text);
-                        cmd.Parameters.AddWithValue("@age", txtAge.Text);
-                        cmd.Parameters.AddWithValue("@dept", cbDept.Text);
-                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                        cmd.Parameters.AddWithValue("@position", cbPosition.Text);
-                        cmd.Parameters.AddWithValue("@id", selectedId);
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Record updated successfully!");
-                LoadData();
-                ClearInputs();
-                selectedId = -1;
             }
             catch (Exception ex)
             {
@@ -177,14 +103,18 @@ namespace Midterm
         {
             txtLastName.Clear();
             txtFirstName.Clear();
-            txtMiddleName.Clear();
+            txtAddress.Clear();
             txtAge.Clear();
-            txtUsername.Clear();
-            txtPassword.Clear();
+            txtTeam.Clear();
+            txtNickname.Clear();
 
             if (cbGender.Items.Count > 0) cbGender.SelectedIndex = 0;
-            if (cbDept.Items.Count > 0) cbDept.SelectedIndex = 0;
+            if (cbSport.Items.Count > 0) cbSport.SelectedIndex = 0;
             if (cbPosition.Items.Count > 0) cbPosition.SelectedIndex = 0;
+
+            cbGender.Refresh();
+            cbSport.Refresh();
+            cbPosition.Refresh();
 
             txtLastName.Focus();
         }
@@ -196,7 +126,7 @@ namespace Midterm
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, position FROM users";
+                    string query = "SELECT id, lastname, firstname, address, gender, age, sport, team, nickname, position FROM users";
                     MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
@@ -219,12 +149,8 @@ namespace Midterm
             LoadData();
 
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbDept.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSport.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            cbSearchBy.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbSearchBy.Items.AddRange(new string[] { "Lastname", "Firstname", "Middlename", "Username" });
-            cbSearchBy.SelectedIndex = 0;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -236,13 +162,13 @@ namespace Midterm
 
                 txtLastName.Text = row.Cells["lastname"].Value.ToString();
                 txtFirstName.Text = row.Cells["firstname"].Value.ToString();
-                txtMiddleName.Text = row.Cells["middlename"].Value.ToString();
+                txtAddress.Text = row.Cells["address"].Value.ToString();
                 txtAge.Text = row.Cells["age"].Value.ToString();
-                txtUsername.Text = row.Cells["username"].Value.ToString();
-                txtPassword.Text = row.Cells["password"].Value.ToString();
+                txtTeam.Text = row.Cells["team"].Value.ToString();
+                txtNickname.Text = row.Cells["nickname"].Value.ToString();
 
                 SetComboBoxValue(cbGender, row.Cells["gender"].Value.ToString().Trim());
-                SetComboBoxValue(cbDept, row.Cells["dept"].Value.ToString().Trim());
+                SetComboBoxValue(cbSport, row.Cells["sport"].Value.ToString().Trim());
                 SetComboBoxValue(cbPosition, row.Cells["position"].Value.ToString().Trim());
             }
         }
@@ -257,7 +183,7 @@ namespace Midterm
             cb.Refresh();
         }
 
-        private void SearchData(string searchTerm)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             try
             {
@@ -265,25 +191,18 @@ namespace Midterm
                 {
                     conn.Open();
 
-                    string column = "lastname";
-                    if (cbSearchBy.SelectedItem != null)
-                    {
-                        switch (cbSearchBy.SelectedItem.ToString())
-                        {
-                            case "Firstname": column = "firstname"; break;
-                            case "Middlename": column = "middlename"; break;
-                            case "Username": column = "username"; break;
-                            default: column = "lastname"; break;
-                        }
-                    }
-
-                    string query = $@"SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, position
+                    string query = @"SELECT id, lastname, firstname, address, gender, age, sport, team, nickname, position
                              FROM users
-                             WHERE {column} LIKE @search";
+                                WHERE lastname LIKE @search
+                                OR firstname LIKE @search
+                                OR sport LIKE @search
+                                OR position LIKE @search
+                                OR nickname LIKE @search
+                                OR team LIKE @search";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.Add("@search", MySqlDbType.VarChar).Value = "%" + searchTerm + "%";
+                        cmd.Parameters.Add("@search", MySqlDbType.VarChar).Value = "%" + txtSearch.Text + "%";
 
                         MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
@@ -295,29 +214,6 @@ namespace Midterm
             catch (Exception ex)
             {
                 MessageBox.Show("Error searching data: " + ex.Message);
-            }
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            SearchData(txtSearch.Text.Trim());
-        }
-
-        private void CancelEdit()
-        {
-            selectedId = -1;
-            ClearInputs();
-            MessageBox.Show("Edit cancelled. You are now back in insert mode.");
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                if (selectedId != -1)
-                {
-                    CancelEdit();
-                }
             }
         }
 
@@ -365,6 +261,88 @@ namespace Midterm
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteRecord();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            selectedId = -1;
+            ClearInputs();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (selectedId <= 0)
+            {
+                MessageBox.Show("Please select a record to update first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT lastname, firstname, address, gender, age, sport, team, nickname, position FROM users WHERE id=@id";
+                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn))
+                    {
+                        selectCmd.Parameters.AddWithValue("@id", selectedId);
+                        using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                bool hasChanges =
+                                    reader["lastname"].ToString() != txtLastName.Text ||
+                                    reader["firstname"].ToString() != txtFirstName.Text ||
+                                    reader["address"].ToString() != txtAddress.Text ||
+                                    reader["gender"].ToString() != cbGender.Text ||
+                                    reader["age"].ToString() != txtAge.Text ||
+                                    reader["sport"].ToString() != cbSport.Text ||
+                                    reader["team"].ToString() != txtTeam.Text ||
+                                    reader["nickname"].ToString() != txtNickname.Text ||
+                                    reader["position"].ToString() != cbPosition.Text;
+
+                                if (!hasChanges)
+                                {
+                                    MessageBox.Show("No changes!");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                    string updateQuery = @"UPDATE users SET
+                        lastname=@lastname, firstname=@firstname, address=@address,
+                        gender=@gender, age=@age, sport=@sport,
+                        team=@team, nickname=@nickname, position=@position
+                        WHERE id=@id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
+                        cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
+                        cmd.Parameters.AddWithValue("@address", txtAddress.Text);
+                        cmd.Parameters.AddWithValue("@gender", cbGender.Text);
+                        cmd.Parameters.AddWithValue("@age", txtAge.Text);
+                        cmd.Parameters.AddWithValue("@sport", cbSport.Text);
+                        cmd.Parameters.AddWithValue("@team", txtTeam.Text);
+                        cmd.Parameters.AddWithValue("@nickname", txtNickname.Text);
+                        cmd.Parameters.AddWithValue("@position", cbPosition.Text);
+                        cmd.Parameters.AddWithValue("@id", selectedId);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Record updated successfully!");
+                LoadData();
+                ClearInputs();
+                selectedId = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }
