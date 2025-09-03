@@ -45,101 +45,101 @@
             this.txtAge = new MaterialSkin.Controls.MaterialTextBox();
             this.txtUsername = new MaterialSkin.Controls.MaterialTextBox();
             this.txtPassword = new MaterialSkin.Controls.MaterialTextBox();
-            this.cbZodiac = new MaterialSkin.Controls.MaterialComboBox();
+            this.cbPosition = new MaterialSkin.Controls.MaterialComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnUpdate = new MaterialSkin.Controls.MaterialButton();
-            this.btnAdd = new MaterialSkin.Controls.MaterialButton();
             this.txtSearch = new MaterialSkin.Controls.MaterialMaskedTextBox();
+            this.cbSearchBy = new MaterialSkin.Controls.MaterialComboBox();
+            this.btnDelete = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 27);
+            this.label1.Size = new System.Drawing.Size(136, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Last Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(32, 114);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 27);
+            this.label2.Size = new System.Drawing.Size(139, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "First Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(32, 185);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(165, 27);
+            this.label3.Size = new System.Drawing.Size(164, 28);
             this.label3.TabIndex = 2;
             this.label3.Text = "Middle Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(557, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 27);
+            this.label4.Size = new System.Drawing.Size(152, 28);
             this.label4.TabIndex = 3;
             this.label4.Text = "Department";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(49, 253);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 27);
+            this.label5.Size = new System.Drawing.Size(96, 28);
             this.label5.TabIndex = 4;
             this.label5.Text = "Gender";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(70, 331);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 27);
+            this.label6.Size = new System.Drawing.Size(56, 28);
             this.label6.TabIndex = 5;
             this.label6.Text = "Age";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(557, 311);
+            this.label7.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(574, 311);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(143, 27);
+            this.label7.Size = new System.Drawing.Size(106, 28);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Zodiac Sign";
+            this.label7.Text = "Position";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(557, 141);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(125, 27);
+            this.label8.Size = new System.Drawing.Size(130, 28);
             this.label8.TabIndex = 7;
             this.label8.Text = "Username";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(557, 232);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(115, 27);
+            this.label9.Size = new System.Drawing.Size(123, 28);
             this.label9.TabIndex = 8;
             this.label9.Text = "Password";
             // 
@@ -212,7 +212,7 @@
             this.cbDept.DropDownHeight = 174;
             this.cbDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDept.DropDownWidth = 121;
-            this.cbDept.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbDept.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDept.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbDept.FormattingEnabled = true;
             this.cbDept.Hint = "Choose your Department";
@@ -245,7 +245,7 @@
             this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGender.DropDownWidth = 121;
             this.cbGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cbGender.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbGender.FormattingEnabled = true;
             this.cbGender.Hint = "Choose your Gender";
@@ -324,43 +324,36 @@
             this.txtPassword.TrailingIcon = null;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_KeyDown);
             // 
-            // cbZodiac
+            // cbPosition
             // 
-            this.cbZodiac.AutoResize = false;
-            this.cbZodiac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cbZodiac.Depth = 0;
-            this.cbZodiac.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cbZodiac.DropDownHeight = 174;
-            this.cbZodiac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbZodiac.DropDownWidth = 121;
-            this.cbZodiac.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbZodiac.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cbZodiac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbZodiac.FormattingEnabled = true;
-            this.cbZodiac.Hint = "Choose your Zodiac Sign";
-            this.cbZodiac.IntegralHeight = false;
-            this.cbZodiac.ItemHeight = 43;
-            this.cbZodiac.Items.AddRange(new object[] {
-            "Aries",
-            "Taurus",
-            "Gemini",
-            "Cancer",
-            "Leo",
-            "Virgo",
-            "Libra",
-            "Scorpio",
-            "Sagittarius",
-            "Capricorn",
-            "Aquarius",
-            "Pisces"});
-            this.cbZodiac.Location = new System.Drawing.Point(745, 298);
-            this.cbZodiac.MaxDropDownItems = 4;
-            this.cbZodiac.MouseState = MaterialSkin.MouseState.OUT;
-            this.cbZodiac.Name = "cbZodiac";
-            this.cbZodiac.Size = new System.Drawing.Size(300, 49);
-            this.cbZodiac.StartIndex = 0;
-            this.cbZodiac.TabIndex = 19;
-            this.cbZodiac.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_KeyDown);
+            this.cbPosition.AutoResize = false;
+            this.cbPosition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbPosition.Depth = 0;
+            this.cbPosition.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbPosition.DropDownHeight = 174;
+            this.cbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPosition.DropDownWidth = 121;
+            this.cbPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbPosition.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbPosition.FormattingEnabled = true;
+            this.cbPosition.Hint = "Choose your role";
+            this.cbPosition.IntegralHeight = false;
+            this.cbPosition.ItemHeight = 43;
+            this.cbPosition.Items.AddRange(new object[] {
+            "Manager",
+            "Teacher",
+            "Student",
+            "Staff",
+            "Principal"});
+            this.cbPosition.Location = new System.Drawing.Point(745, 298);
+            this.cbPosition.MaxDropDownItems = 4;
+            this.cbPosition.MouseState = MaterialSkin.MouseState.OUT;
+            this.cbPosition.Name = "cbPosition";
+            this.cbPosition.Size = new System.Drawing.Size(300, 49);
+            this.cbPosition.StartIndex = 0;
+            this.cbPosition.TabIndex = 19;
+            this.cbPosition.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxes_KeyDown);
             // 
             // dataGridView1
             // 
@@ -368,8 +361,10 @@
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 395);
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ControlText;
+            this.dataGridView1.Location = new System.Drawing.Point(37, 398);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -380,46 +375,6 @@
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnUpdate.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnUpdate.Depth = 0;
-            this.btnUpdate.HighEmphasis = true;
-            this.btnUpdate.Icon = null;
-            this.btnUpdate.Location = new System.Drawing.Point(341, 644);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnUpdate.Size = new System.Drawing.Size(77, 36);
-            this.btnUpdate.TabIndex = 21;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnUpdate.UseAccentColor = false;
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnAdd.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnAdd.Depth = 0;
-            this.btnAdd.HighEmphasis = true;
-            this.btnAdd.Icon = null;
-            this.btnAdd.Location = new System.Drawing.Point(473, 644);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnAdd.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnAdd.Size = new System.Drawing.Size(84, 36);
-            this.btnAdd.TabIndex = 23;
-            this.btnAdd.Text = "Refresh";
-            this.btnAdd.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnAdd.UseAccentColor = false;
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
             // txtSearch
             // 
             this.txtSearch.AllowPromptAsInput = true;
@@ -429,13 +384,13 @@
             this.txtSearch.BeepOnError = false;
             this.txtSearch.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.IncludeLiterals;
             this.txtSearch.Depth = 0;
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.HidePromptOnLeave = false;
             this.txtSearch.HideSelection = true;
             this.txtSearch.Hint = "Search...";
             this.txtSearch.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Default;
             this.txtSearch.LeadingIcon = null;
-            this.txtSearch.Location = new System.Drawing.Point(37, 632);
+            this.txtSearch.Location = new System.Drawing.Point(37, 642);
             this.txtSearch.Mask = "";
             this.txtSearch.MaxLength = 32767;
             this.txtSearch.MouseState = MaterialSkin.MouseState.OUT;
@@ -452,7 +407,7 @@
             this.txtSearch.SelectionLength = 0;
             this.txtSearch.SelectionStart = 0;
             this.txtSearch.ShortcutsEnabled = true;
-            this.txtSearch.Size = new System.Drawing.Size(250, 48);
+            this.txtSearch.Size = new System.Drawing.Size(815, 48);
             this.txtSearch.SkipLiterals = true;
             this.txtSearch.TabIndex = 24;
             this.txtSearch.TabStop = false;
@@ -463,16 +418,61 @@
             this.txtSearch.ValidatingType = null;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // cbSearchBy
+            // 
+            this.cbSearchBy.AutoResize = false;
+            this.cbSearchBy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cbSearchBy.Depth = 0;
+            this.cbSearchBy.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbSearchBy.DropDownHeight = 174;
+            this.cbSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchBy.DropDownWidth = 121;
+            this.cbSearchBy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbSearchBy.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearchBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbSearchBy.FormattingEnabled = true;
+            this.cbSearchBy.Hint = "Filter";
+            this.cbSearchBy.IntegralHeight = false;
+            this.cbSearchBy.ItemHeight = 43;
+            this.cbSearchBy.Location = new System.Drawing.Point(858, 641);
+            this.cbSearchBy.MaxDropDownItems = 4;
+            this.cbSearchBy.MouseState = MaterialSkin.MouseState.OUT;
+            this.cbSearchBy.Name = "cbSearchBy";
+            this.cbSearchBy.Size = new System.Drawing.Size(187, 49);
+            this.cbSearchBy.StartIndex = 0;
+            this.cbSearchBy.TabIndex = 25;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDelete.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDelete.Depth = 0;
+            this.btnDelete.HighEmphasis = true;
+            this.btnDelete.Icon = null;
+            this.btnDelete.Location = new System.Drawing.Point(37, 718);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDelete.Size = new System.Drawing.Size(133, 36);
+            this.btnDelete.TabIndex = 26;
+            this.btnDelete.Text = "DELETE RECORD";
+            this.btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDelete.UseAccentColor = false;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1093, 705);
+            this.BackColor = System.Drawing.SystemColors.Menu;
+            this.ClientSize = new System.Drawing.Size(1093, 825);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.cbSearchBy);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.cbZodiac);
+            this.Controls.Add(this.cbPosition);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.txtAge);
@@ -492,8 +492,9 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
-            this.Text = "CRUD";
+            this.Text = "My Tasks";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -519,11 +520,11 @@
         private MaterialSkin.Controls.MaterialTextBox txtAge;
         private MaterialSkin.Controls.MaterialTextBox txtUsername;
         private MaterialSkin.Controls.MaterialTextBox txtPassword;
-        private MaterialSkin.Controls.MaterialComboBox cbZodiac;
+        private MaterialSkin.Controls.MaterialComboBox cbPosition;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private MaterialSkin.Controls.MaterialButton btnUpdate;
-        private MaterialSkin.Controls.MaterialButton btnAdd;
         private MaterialSkin.Controls.MaterialMaskedTextBox txtSearch;
+        private MaterialSkin.Controls.MaterialComboBox cbSearchBy;
+        private MaterialSkin.Controls.MaterialButton btnDelete;
     }
 }
 

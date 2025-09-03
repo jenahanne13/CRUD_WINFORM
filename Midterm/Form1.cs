@@ -13,7 +13,7 @@ namespace Midterm
 {
     public partial class Form1 : Form
     {
-        private string connectionString = "server=localhost;database=midterm;uid=root;pwd=;";
+        private string connectionString = "server=localhost;database=jiro;uid=root;pwd=;";
         private int selectedId = -1;
 
         public Form1()
@@ -36,52 +36,157 @@ namespace Midterm
                 else if (me == txtAge) cbDept.Focus();
                 else if (me == cbDept) txtUsername.Focus();
                 else if (me == txtUsername) txtPassword.Focus();
-                else if (me == txtPassword) cbZodiac.Focus();
-                else if (me == cbZodiac)
+                else if (me == txtPassword) cbPosition.Focus();
+                else if (me == cbPosition)
                 {
-                    try
+                    if (string.IsNullOrWhiteSpace(txtLastName.Text) ||
+                        string.IsNullOrWhiteSpace(txtFirstName.Text) ||
+                        string.IsNullOrWhiteSpace(txtMiddleName.Text) ||
+                        string.IsNullOrWhiteSpace(txtAge.Text) ||
+                        string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                        string.IsNullOrWhiteSpace(txtPassword.Text) ||
+                        cbGender.SelectedIndex == -1 ||
+                        cbDept.SelectedIndex == -1 ||
+                        cbPosition.SelectedIndex == -1)
                     {
-                        using (MySqlConnection conn = new MySqlConnection(connectionString))
-                        {
-                            conn.Open();
-                            string query = @"INSERT INTO users
-                                    (lastname, firstname, middlename, gender, age, dept, username, password, zodiac)
-                                    VALUES
-                                    (@lastname, @firstname, @middlename, @gender, @age, @dept, @username, @password, @zodiac)";
-
-                            using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                            {
-                                cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
-                                cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
-                                cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
-                                cmd.Parameters.AddWithValue("@gender", cbGender.Text);
-                                cmd.Parameters.AddWithValue("@age", txtAge.Text);
-                                cmd.Parameters.AddWithValue("@dept", cbDept.Text);
-                                cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                                cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                                cmd.Parameters.AddWithValue("@zodiac", cbZodiac.Text);
-
-                                cmd.ExecuteNonQuery();
-                                LoadData();
-                            }
-                        }
-
-                        MessageBox.Show("Data saved successfully!");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message);
+                        MessageBox.Show("Please fill in all textboxes and select values in all combo boxes.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
 
-                    txtLastName.Clear();
-                    txtFirstName.Clear();
-                    txtMiddleName.Clear();
-                    txtAge.Clear();
-                    txtUsername.Clear();
-                    txtPassword.Clear();
-                    txtLastName.Focus();
+                    if (selectedId == -1)
+                    {
+                        InsertRecord();
+                    }
+                    else
+                    {
+                        UpdateRecord();
+                    }
                 }
             }
+        }
+
+        private void InsertRecord()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO users
+                (lastname, firstname, middlename, gender, age, dept, username, password, position)
+                VALUES
+                (@lastname, @firstname, @middlename, @gender, @age, @dept, @username, @password, @position)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
+                        cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
+                        cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
+                        cmd.Parameters.AddWithValue("@gender", cbGender.Text);
+                        cmd.Parameters.AddWithValue("@age", txtAge.Text);
+                        cmd.Parameters.AddWithValue("@dept", cbDept.Text);
+                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@position", cbPosition.Text);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Data saved successfully!");
+                LoadData();
+                ClearInputs();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void UpdateRecord()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string selectQuery = "SELECT lastname, firstname, middlename, gender, age, dept, username, password, position FROM users WHERE id=@id";
+                    using (MySqlCommand selectCmd = new MySqlCommand(selectQuery, conn))
+                    {
+                        selectCmd.Parameters.AddWithValue("@id", selectedId);
+                        using (MySqlDataReader reader = selectCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                bool hasChanges =
+                                    reader["lastname"].ToString() != txtLastName.Text ||
+                                    reader["firstname"].ToString() != txtFirstName.Text ||
+                                    reader["middlename"].ToString() != txtMiddleName.Text ||
+                                    reader["gender"].ToString() != cbGender.Text ||
+                                    reader["age"].ToString() != txtAge.Text ||
+                                    reader["dept"].ToString() != cbDept.Text ||
+                                    reader["username"].ToString() != txtUsername.Text ||
+                                    reader["password"].ToString() != txtPassword.Text ||
+                                    reader["position"].ToString() != cbPosition.Text;
+
+                                if (!hasChanges)
+                                {
+                                    MessageBox.Show("No changes detected. Record not updated.");
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
+                    string updateQuery = @"UPDATE users SET
+                        lastname=@lastname, firstname=@firstname, middlename=@middlename,
+                        gender=@gender, age=@age, dept=@dept,
+                        username=@username, password=@password, position=@position
+                        WHERE id=@id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
+                        cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
+                        cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
+                        cmd.Parameters.AddWithValue("@gender", cbGender.Text);
+                        cmd.Parameters.AddWithValue("@age", txtAge.Text);
+                        cmd.Parameters.AddWithValue("@dept", cbDept.Text);
+                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                        cmd.Parameters.AddWithValue("@position", cbPosition.Text);
+                        cmd.Parameters.AddWithValue("@id", selectedId);
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Record updated successfully!");
+                LoadData();
+                ClearInputs();
+                selectedId = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void ClearInputs()
+        {
+            txtLastName.Clear();
+            txtFirstName.Clear();
+            txtMiddleName.Clear();
+            txtAge.Clear();
+            txtUsername.Clear();
+            txtPassword.Clear();
+
+            if (cbGender.Items.Count > 0) cbGender.SelectedIndex = 0;
+            if (cbDept.Items.Count > 0) cbDept.SelectedIndex = 0;
+            if (cbPosition.Items.Count > 0) cbPosition.SelectedIndex = 0;
+
+            txtLastName.Focus();
         }
 
         private void LoadData()
@@ -91,11 +196,14 @@ namespace Midterm
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, zodiac FROM users";
+                    string query = "SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, position FROM users";
                     MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dataGridView1.DataSource = dt;
+
+                    if (dataGridView1.Columns["id"] != null)
+                        dataGridView1.Columns["id"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -106,11 +214,17 @@ namespace Midterm
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.KeyPreview = true;
+
             LoadData();
 
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cbDept.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbZodiac.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbPosition.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            cbSearchBy.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbSearchBy.Items.AddRange(new string[] { "Lastname", "Firstname", "Middlename", "Username" });
+            cbSearchBy.SelectedIndex = 0;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -127,10 +241,9 @@ namespace Midterm
                 txtUsername.Text = row.Cells["username"].Value.ToString();
                 txtPassword.Text = row.Cells["password"].Value.ToString();
 
-                // Safe ComboBox update with repaint
                 SetComboBoxValue(cbGender, row.Cells["gender"].Value.ToString().Trim());
                 SetComboBoxValue(cbDept, row.Cells["dept"].Value.ToString().Trim());
-                SetComboBoxValue(cbZodiac, row.Cells["zodiac"].Value.ToString().Trim());
+                SetComboBoxValue(cbPosition, row.Cells["position"].Value.ToString().Trim());
             }
         }
 
@@ -144,62 +257,6 @@ namespace Midterm
             cb.Refresh();
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            if (selectedId == -1)
-            {
-                MessageBox.Show("Please select a record first!");
-                return;
-            }
-
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = @"UPDATE users SET
-                            lastname=@lastname, firstname=@firstname, middlename=@middlename,
-                            gender=@gender, age=@age, dept=@dept,
-                            username=@username, password=@password, zodiac=@zodiac
-                            WHERE id=@id";
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@lastname", txtLastName.Text);
-                        cmd.Parameters.AddWithValue("@firstname", txtFirstName.Text);
-                        cmd.Parameters.AddWithValue("@middlename", txtMiddleName.Text);
-                        cmd.Parameters.AddWithValue("@gender", cbGender.Text);
-                        cmd.Parameters.AddWithValue("@age", txtAge.Text);
-                        cmd.Parameters.AddWithValue("@dept", cbDept.Text);
-                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
-                        cmd.Parameters.AddWithValue("@zodiac", cbZodiac.Text);
-                        cmd.Parameters.AddWithValue("@id", selectedId);
-
-                        cmd.ExecuteNonQuery();
-                    }
-                }
-
-                MessageBox.Show("Record updated successfully!");
-                LoadData();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            txtLastName.Clear();
-            txtFirstName.Clear();
-            txtMiddleName.Clear();
-            txtAge.Clear();
-            txtUsername.Clear();
-            txtPassword.Clear();
-            txtLastName.Focus();
-        }
-
         private void SearchData(string searchTerm)
         {
             try
@@ -208,9 +265,21 @@ namespace Midterm
                 {
                     conn.Open();
 
-                    string query = @"SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, zodiac
+                    string column = "lastname";
+                    if (cbSearchBy.SelectedItem != null)
+                    {
+                        switch (cbSearchBy.SelectedItem.ToString())
+                        {
+                            case "Firstname": column = "firstname"; break;
+                            case "Middlename": column = "middlename"; break;
+                            case "Username": column = "username"; break;
+                            default: column = "lastname"; break;
+                        }
+                    }
+
+                    string query = $@"SELECT id, lastname, firstname, middlename, gender, age, dept, username, password, position
                              FROM users
-                             WHERE CONCAT(lastname, ' ', firstname, ' ', username) LIKE @search";
+                             WHERE {column} LIKE @search";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -232,6 +301,70 @@ namespace Midterm
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             SearchData(txtSearch.Text.Trim());
+        }
+
+        private void CancelEdit()
+        {
+            selectedId = -1;
+            ClearInputs();
+            MessageBox.Show("Edit cancelled. You are now back in insert mode.");
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                if (selectedId != -1)
+                {
+                    CancelEdit();
+                }
+            }
+        }
+
+        private void DeleteRecord()
+        {
+            if (selectedId == -1)
+            {
+                MessageBox.Show("Please select a row to delete.");
+                return;
+            }
+
+            var confirm = MessageBox.Show("Are you sure you want to delete this record?",
+                                          "Confirm Delete",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    using (MySqlConnection conn = new MySqlConnection(connectionString))
+                    {
+                        conn.Open();
+                        string query = "DELETE FROM users WHERE id=@id";
+
+                        using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@id", selectedId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Record deleted successfully!");
+                    LoadData();
+                    ClearInputs();
+                    selectedId = -1;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error deleting record: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteRecord();
         }
     }
 }
